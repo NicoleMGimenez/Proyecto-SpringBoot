@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body class="body">
 	<div class="container">
 		<div th:insert="layouts/header :: header"></div>
 
@@ -99,11 +99,11 @@
 
 		<br>
 		<h3>Lista de Clientes</h3><br>
-		<div>
-			<table class="table table-striped">
+		<div class="table-responsive">
+			<table class="table">
 				<thead>
+					<th class="columna">Num Doc</th>
 					<th>Tipo</th>
-					<th>Num Doc</th>
 					<th>Apellido y Nombre</th>
 					<th>Email</th>
 					<th>Fecha de Nac</th>
@@ -111,12 +111,18 @@
 					<th>Edad</th>
 					<th>Cod - Telefono</th>
 					<th>Datos Adicionales</th>
+					<th>Edicion</th>
 
 					</tr>
 				</thead>
+				
+				<tr th:if="${clientes.empty}">
+            		<td colspan="2"> No hay clientes en el listado </td>
+        		</tr>
+        		
 				<tr th:each="cli : ${clientes}">
+					<td class="columna" th:text="${cli.nroDocumento}"></td>
 					<td th:text="${cli.tipoDocumento}"></td>
-					<td th:text="${cli.nroDocumento}"></td>
 					<td th:text="${cli.nombreApellido}"></td>
 					<td th:text="${cli.email}"></td>
 					<td th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
@@ -125,7 +131,6 @@
 						<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
 						<td th:text="${cli.getTiempoDesdeUltimaCompra()}"></td>
 						<td th:text="${cli.getTiempoProxCumple}"></td>
-						
 					</tr>
 				</table>
 

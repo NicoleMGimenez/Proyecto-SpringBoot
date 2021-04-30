@@ -10,7 +10,7 @@
 	<title>Producto</title>
 </head>
 
-<body>
+<body class="body">
 	<div class="container">
 		<div th:insert="layouts/header :: header"></div>
 
@@ -76,6 +76,11 @@
 						<th>Stock</th>
 					</tr>
 				</thead>
+				
+				<tr th:if="${productos.empty}">
+            		<td colspan="2"> No hay productos en el listado </td>
+        		</tr>
+				
 				<tr th:each="producto : ${productos}">
 					<td th:text="${producto.codProducto}"></td>
 					<td th:text="${producto.nombre}"></td>

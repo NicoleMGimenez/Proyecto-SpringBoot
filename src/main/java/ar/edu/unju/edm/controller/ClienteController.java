@@ -28,6 +28,7 @@ public class ClienteController {
 		model.addAttribute("clientes", clienteService.obtenerTodosClientes());
 		return("cliente");
 	}
+	
 
 	@PostMapping("/cliente/guardar")
 	public String guardarNuevoProducto(@ModelAttribute("unCliente") Cliente nuevoCliente, Model model) {
@@ -38,6 +39,7 @@ public class ClienteController {
 		return "redirect:/cliente/mostrar";
 	}
 	
+
 	public void trabajarConFechas() {
 		//algunas cosas con fecha;
 		//obtengo tres fechas
