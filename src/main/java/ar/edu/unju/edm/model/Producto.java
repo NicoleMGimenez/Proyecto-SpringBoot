@@ -7,6 +7,7 @@ public class Producto {
 	
 	private int codProducto;
 	private String nombre;
+	private String descripcion;
 	private double precio;
 	private String marca;
 	private int stock;	
@@ -53,6 +54,14 @@ public class Producto {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 }

@@ -16,7 +16,8 @@
 		<div th:insert="layouts/header :: header"></div>
 
 		<h1>Formulario de Carga de Cliente</h1>
-		<form id="formProducto" th:object="${unCliente}" th:action="@{/cliente/guardar}" method="post">
+		<form id="formCliente" th:object="${unCliente}"
+			th:action="${editMode}?@{/cliente/modificar}:@{/cliente/guardar}" method="post">
 
 			<div class="form-group row">
 				<label for="numdoc" class="col-sm-2 col-form-label">Documento</label>
@@ -90,7 +91,9 @@
 			</div>
 
 			<div>
-				<button type="submit" value="Agregar" class="btn btn-primary btn-sm">Agregar</button>
+				<!--<button type="submit" value="Agregar" class="btn btn-primary btn-sm">Agregar</button>-->
+				<input type="submit" class="btn btn-success btn-block"
+					th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
 			</div>
 
 		</form>
@@ -102,6 +105,7 @@
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
+				<tr>
 					<th class="columna">Num Doc</th>
 					<th>Tipo</th>
 					<th>Apellido y Nombre</th>
@@ -111,15 +115,16 @@
 					<th>Edad</th>
 					<th>Cod - Telefono</th>
 					<th>Datos Adicionales</th>
+					<th></th>
 					<th>Edicion</th>
 
-					</tr>
+				</tr>
 				</thead>
-				
+
 				<tr th:if="${clientes.empty}">
-            		<td colspan="2"> No hay clientes en el listado </td>
-        		</tr>
-        		
+					<td colspan="2"> No hay clientes en el listado </td>
+				</tr>
+
 				<tr th:each="cli : ${clientes}">
 					<td class="columna" th:text="${cli.nroDocumento}"></td>
 					<td th:text="${cli.tipoDocumento}"></td>
@@ -131,6 +136,11 @@
 						<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
 						<td th:text="${cli.getTiempoDesdeUltimaCompra()}"></td>
 						<td th:text="${cli.getTiempoProxCumple}"></td>
+						<td>
+		 				<a href="#" th:href="@{'/cliente/editar/'+${cli.nroDocumento}}">
+							<i class="fa fa-edit"></i>
+						</a>
+						</td>
 					</tr>
 				</table>
 
