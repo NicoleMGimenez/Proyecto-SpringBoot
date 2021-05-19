@@ -62,15 +62,28 @@ public class ProductoServiceMySQL implements IProductoService{
 	}
 
 	@Override
-	public void modificarProducto(Producto productoModificado) {
+	public void modificarProducto(Producto productoModificado) throws Exception {
 		// TODO Auto-generated method stub
-		
+		Producto productoAModificar = iProductoDAO.findByCodProducto(productoModificado.getCodProducto()).orElseThrow(()->new Exception("El Producto no fue encontrado"));
+		cambiarProducto(productoModificado, productoAModificar);
+		iProductoDAO.save(productoAModificar);
+	}
+
+	private void cambiarProducto(Producto productoModificado, Producto productoAModificar) {
+		// TODO Auto-generated method stub
+		productoAModificar.setCodProducto(productoModificado.getCodProducto());
+		productoAModificar.setNombre(productoModificado.getNombre());
+		productoAModificar.setMarca(productoModificado.getMarca());
+		productoAModificar.setPrecio(productoModificado.getPrecio());
+		productoAModificar.setStock(productoModificado.getStock());
+		productoAModificar.setDescripcion(productoModificado.getDescripcion());
 	}
 
 	@Override
-	public void eliminarProducto(int id) {
+	public void eliminarProducto(int id) throws Exception {
 		// TODO Auto-generated method stub
-		
+		Producto productoEliminar = iProductoDAO.findByCodProducto(id).orElseThrow(()->new Exception("El Producto no fue encontrado"));
+		iProductoDAO.delete(productoEliminar);
 	}
 
 }

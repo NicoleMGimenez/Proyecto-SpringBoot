@@ -15,9 +15,9 @@ public interface IProductoService {
 	public ArrayList<Producto> obtenerTodosProductos();
 	public Producto obtenerProductoNuevo();
 	public Producto obtenerUltimoProducto();
-	public Producto encontrarUnProducto(int cod);
+	public Producto encontrarUnProducto(int cod) throws Exception;
 	public Object crearProducto();
-	public void modificarProducto(Producto productoModificado);
-	public void eliminarProducto(int id);
+	public void modificarProducto(Producto productoModificado) throws Exception;
+	public void eliminarProducto(int id) throws Exception;
 	
 }

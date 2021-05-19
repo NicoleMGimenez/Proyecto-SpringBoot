@@ -17,5 +17,4 @@ public interface IClienteDAO extends CrudRepository<Cliente, Integer>{
 	
 	public Optional<Cliente> findByNroDocumento(int dni);
 	
-	
 }
