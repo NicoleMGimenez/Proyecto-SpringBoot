@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -22,6 +25,8 @@ public class Cliente {
 	@Column
 	private Integer idCliente;
 	@Column (name="documento")
+	@Min(100000)
+	@Max(99999999)
 	private int nroDocumento;
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -40,6 +45,7 @@ public class Cliente {
 	@Column
 	private String email;
 	@Column
+	@NotBlank (message="Campo obligatorio")
 	private String nombreApellido;
 	@Column
 	private String password;
