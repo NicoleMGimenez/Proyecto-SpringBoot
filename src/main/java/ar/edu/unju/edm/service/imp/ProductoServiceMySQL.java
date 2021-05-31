@@ -85,4 +85,10 @@ public class ProductoServiceMySQL implements IProductoService{
 		iProductoDAO.delete(productoEliminar);
 	}
 
+	@Override
+	public Producto obtenerProductoCodigo(int cod) throws Exception{
+		// TODO Auto-generated method stub
+		return iProductoDAO.findByCodProducto(cod).orElseThrow(()->new Exception("El Producto no fue encontrado"));
+	}
+
 }

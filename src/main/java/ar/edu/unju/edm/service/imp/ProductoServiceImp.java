@@ -99,5 +99,12 @@ public class ProductoServiceImp implements IProductoService {
 		// TODO Auto-generated method stub
 		return listaDeProductos;
 	}
+
+
+	@Override
+	public Producto obtenerProductoCodigo(int cod) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

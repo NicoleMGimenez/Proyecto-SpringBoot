@@ -31,6 +31,9 @@ public class Producto {
 	@Column
 	private int stock;	
 	
+//	@OneToMany(cascade = CascadeType.ALL)
+//	List <Venta> ventas;
+	
 	public Producto() {
 		// TODO Auto-generated constructor stub
 	}

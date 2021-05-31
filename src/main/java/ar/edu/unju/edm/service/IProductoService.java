@@ -19,5 +19,5 @@ public interface IProductoService {
 	public Object crearProducto();
 	public void modificarProducto(Producto productoModificado) throws Exception;
 	public void eliminarProducto(int id) throws Exception;
-	
+	public Producto obtenerProductoCodigo(int cod) throws Exception;
 }
