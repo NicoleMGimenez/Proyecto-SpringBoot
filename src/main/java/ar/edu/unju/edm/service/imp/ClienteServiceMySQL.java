@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Cliente;
@@ -22,6 +23,10 @@ public class ClienteServiceMySQL implements IClienteService {
 	@Override
 	public void guardarCliente(Cliente clienteGuardado) {
 		// TODO Auto-generated method stub
+		String pw = unCliente.getPassword();
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		unCliente.setPassword(bCryptPasswordEncoder.encode(pw));
+		
 		iClienteDAO.save(clienteGuardado);
 	}
 

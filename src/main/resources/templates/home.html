@@ -13,8 +13,6 @@
 <body class="body-home">
 	<div class="container">
 
-		<div th:insert="layouts/header :: header"></div>
-
 		<div class="row align-items-end">
 			<div class="col">
 
@@ -25,24 +23,26 @@
 			<div class="col">
 				<div class="login-box">
 					<form class="login">
-						
+					
+						<form th:action="@{/login}"	method="post">
+					
 						<div class="app-title">
 							<h1>Login</h1>
 						</div>
 						
 						  <div class="form-group row">
   							<label for="username"class="col-sm-2 col-form-label">Username</label> <br>
-      						<input type="text" placeholder="Enter Username"class="form-control">
+      						<input type="text" name="correo" placeholder="Enter Username"class="form-control">
         				  </div>
 
 						  <div class="form-group row">
        						 <label for="password"class="col-sm-2 col-form-label">Password</label> <br>
-  							 <input type="password" placeholder="Enter Password"class="form-control">
+  							 <input type="password" name="password" placeholder="Enter Password"class="form-control">
         				  </div>
         				  
 						<div class="d-grid gap-2">
 							<br>
-							<input type="button" class="btn btn-primary" value="Log In">
+							<input type="submit" class="btn btn-primary" value="Log In">
 						</div>
 						
 						<br>
@@ -50,6 +50,12 @@
 						<a href="#">Don't have An account?</a>
 
 					</form>
+					
+					<div th:if="${param.error}" class="alert alert-danger" role="alert">
+				Combinación Invalida de Usuario y Contraseña</div>
+			<div th:if="${param.logout}" class="alert alert-success" role="alert">
+				Ha salido del Sistema. Gracias!</div>
+					
 				</div>
 			</div>
 		</div>

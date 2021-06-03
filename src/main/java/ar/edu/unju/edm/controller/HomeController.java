@@ -13,11 +13,9 @@ public class HomeController {
 	@Autowired
 	Home unHome;
     
-@GetMapping({"/home"})
-	public String cargarHome(Model model) {
-				
-		model.addAttribute("home", unHome);
-		return "home";
+	@GetMapping({"/","/login","/home", "/index","/login?error=true"})
+	public String cargarHome(Model model){	
+	return "home";
 	}
 
 }
