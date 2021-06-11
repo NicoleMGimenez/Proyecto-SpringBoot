@@ -21,13 +21,13 @@ public class ClienteServiceMySQL implements IClienteService {
 	@Autowired
 	IClienteDAO iClienteDAO;
 	@Override
-	public void guardarCliente(Cliente clienteGuardado) {
+	public void guardarCliente(Cliente unCliente) {
 		// TODO Auto-generated method stub
 		String pw = unCliente.getPassword();
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
 		unCliente.setPassword(bCryptPasswordEncoder.encode(pw));
 		
-		iClienteDAO.save(clienteGuardado);
+		iClienteDAO.save(unCliente);
 	}
 
 	@Override
